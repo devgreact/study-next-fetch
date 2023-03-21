@@ -23,18 +23,18 @@ export default function Home({ cats }) {
 // - 항상 최신 상태를 유지해야하는 웹 페이지나, 분석 차트, 게시판 등, 
 // - 사용자의 요청마다 동적으로 페이지를 생성해 다른 내용을 보여주어야 하는 경우에 사용됩니다.
 // - 그때 그때 보여주는 방식
-export const getServerSideProps = async () => {
-  // const res = await fetch(
-  //   "https://api.thecatapi.com/v1/breeds?api_key=live_Z9dx0VtiK2f0qbMsh1fhE7Z3Sw21vaP79MAhtKChl3XFPpWKvoBDSa6OSqZHYNSJ&limit=10"
-  // );
-  const res = await fetch(`http://localhost:8080/api/cats`)
-  const cats = await res.json();
-  return {
-    props: {
-      cats: cats,
-    },
-  };
-};
+// export const getServerSideProps = async () => {
+//   // const res = await fetch(
+//   //   "https://api.thecatapi.com/v1/breeds?api_key=live_Z9dx0VtiK2f0qbMsh1fhE7Z3Sw21vaP79MAhtKChl3XFPpWKvoBDSa6OSqZHYNSJ&limit=10"
+//   // );
+//   const res = await fetch(`http://localhost:8080/api/cats`)
+//   const cats = await res.json();
+//   return {
+//     props: {
+//       cats: cats,
+//     },
+//   };
+// };
 
 // SSG(Static-Site-Generation)
 
@@ -55,14 +55,16 @@ export const getServerSideProps = async () => {
 //- 이 함수는 API와 같은 외부 데이터(SQL, ...)를 받아 
 //- Static Generation 하기 위한 용도입니다.
 
-// export const getStaticProps = async () => {
-//   const res = await fetch(
-//     "https://api.thecatapi.com/v1/breeds?api_key=live_Z9dx0VtiK2f0qbMsh1fhE7Z3Sw21vaP79MAhtKChl3XFPpWKvoBDSa6OSqZHYNSJ&limit=10"
-//   );
-//   const cats = await res.json();
-//   return {
-//     props: {
-//       cats: cats,
-//     },
-//   };
-// };
+export const getStaticProps = async () => {
+  // const res = await fetch(
+  //   "https://api.thecatapi.com/v1/breeds?api_key=live_Z9dx0VtiK2f0qbMsh1fhE7Z3Sw21vaP79MAhtKChl3XFPpWKvoBDSa6OSqZHYNSJ&limit=10"
+  // );
+  const res = await fetch(`http://localhost:8080/api/cats`)
+  const cats = await res.json();
+  return {
+    props: {
+      cats: cats,
+    },
+    revalidate: 20
+  };
+};
