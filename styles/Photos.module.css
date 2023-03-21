@@ -1,0 +1,14 @@
+.photos {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-gap: 1rem;
+}
+.photos li {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+.photos li span {
+    width: 100%;
+    text-align: center;
+}

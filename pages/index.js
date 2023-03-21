@@ -56,10 +56,10 @@ export default function Home({ cats }) {
 //- Static Generation 하기 위한 용도입니다.
 
 export const getStaticProps = async () => {
-  // const res = await fetch(
-  //   "https://api.thecatapi.com/v1/breeds?api_key=live_Z9dx0VtiK2f0qbMsh1fhE7Z3Sw21vaP79MAhtKChl3XFPpWKvoBDSa6OSqZHYNSJ&limit=10"
-  // );
-  const res = await fetch(`http://localhost:8080/api/cats`)
+  const res = await fetch(
+    "https://api.thecatapi.com/v1/breeds?api_key=live_Z9dx0VtiK2f0qbMsh1fhE7Z3Sw21vaP79MAhtKChl3XFPpWKvoBDSa6OSqZHYNSJ&limit=10"
+  );
+  // const res = await fetch(`http://localhost:8080/api/cats`)
   const cats = await res.json();
   return {
     props: {
